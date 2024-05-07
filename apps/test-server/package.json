@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@test/server",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

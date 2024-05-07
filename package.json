@@ -36,6 +36,7 @@
     "preview": "npm run build && vite preview",
     "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
     "serve": "npm run dev",
+    "server:dev": "pnpm run -C server start:dev",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",
     "type:check": "vue-tsc --noEmit --skipLibCheck"
   },
