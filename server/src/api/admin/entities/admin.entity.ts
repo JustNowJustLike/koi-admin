@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../../role/entities/role.entity';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, OmitType } from '@nestjs/swagger';
 
 @Entity()
 export class Admin extends BaseEntity {
@@ -28,6 +28,7 @@ export class Admin extends BaseEntity {
 
   @ApiProperty({
     description: '角色列表',
+    type: () => [() => OmitType(Role, [])],
   })
   @ManyToMany(() => Role, (roleList) => roleList.adminList)
   @JoinTable()

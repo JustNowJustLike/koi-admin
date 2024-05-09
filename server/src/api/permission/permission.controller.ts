@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PermissionService } from './permission.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, OmitType } from '@nestjs/swagger';
+import { Permission } from './entities/permission.entity';
+import { ApiSuccess } from '../../decorators/response/response.decorator';
 
 @ApiTags('permission')
 @Controller('permission')
@@ -14,6 +16,11 @@ export class PermissionController {
     return this.permissionService.create(createPermissionDto);
   }
 
+  @ApiOperation({
+    summary: '权限树',
+    operationId: 'getPermissionTree',
+  })
+  @ApiSuccess(Permission)
   @Get()
   findAll() {
     return this.permissionService.findAll();
