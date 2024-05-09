@@ -1,5 +1,4 @@
 import {
-  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -14,14 +13,21 @@ import { Permission } from '../../permission/entities/permission.entity';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
 
 @Entity()
-export class Role extends BaseEntity {
+export class Role {
+  @ApiProperty({
+    description: '角色id',
+  })
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @ApiProperty({
+    description: '角色名称',
+  })
   @Column()
   name: string;
 
   @ApiProperty({
-    type: () => [() => OmitType(Admin, [])],
+    type: () => [() => OmitType(Admin, ['roleList'])],
   })
   @ManyToMany(() => Admin, (adminList) => adminList.roleList)
   adminList: Admin[];

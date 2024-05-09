@@ -1,5 +1,4 @@
 import {
-  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -13,7 +12,7 @@ import { Role } from '../../role/entities/role.entity';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
 
 @Entity()
-export class Admin extends BaseEntity {
+export class Admin {
   @ApiProperty({
     description: 'admin的uuid',
   })
